@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>hogwarts</artifactId>
+		<groupId>org.technbolts</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<artifactId>hogwarts-core</artifactId>
+
+	<properties>
+		<qi4j.version>1.4.1</qi4j.version>
+	</properties>
+
+	<dependencies>
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<!-- Qi4j -->
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<dependency>
+			<groupId>org.qi4j.core</groupId>
+			<artifactId>org.qi4j.core.api</artifactId>
+			<version>${qi4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.qi4j.core</groupId>
+			<artifactId>org.qi4j.core.bootstrap</artifactId>
+			<version>${qi4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.qi4j.core</groupId>
+			<artifactId>org.qi4j.core.runtime</artifactId>
+			<version>${qi4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.qi4j.core</groupId>
+			<artifactId>org.qi4j.core.testsupport</artifactId>
+			<version>${qi4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<!-- Log -->
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<!-- Misc -->
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<dependency>
+			<groupId>org.functionaljava</groupId>
+			<artifactId>functionaljava</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<!-- Test -->
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.8.0</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>qi4j-official</id>
+			<url>http://repository.ops4j.org/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+</project>

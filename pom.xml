@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.technbolts</groupId>
+	<artifactId>hogwarts</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>hogwarts-core</module>
+		<module>hogwarts-jbehave</module>
+	</modules>
+
+	<properties>
+		<jbehave.version>3.5.4</jbehave.version>
+		<spring.version>3.1.0.RELEASE</spring.version>
+		<functionaljava.version>3.0</functionaljava.version>
+		<guava.version>10.0.1</guava.version>
+		<slf4j.version>1.6.4</slf4j.version>
+		<logback.version>1.0.0</logback.version>
+
+		<!-- Java 1.6 -->
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- ~~~~~~~~~~~~~~~~ -->
+			<!-- JBehave -->
+			<!-- ~~~~~~~~~~~~~~~~ -->
+			<dependency>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-core</artifactId>
+				<version>${jbehave.version}</version>
+			</dependency>
+
+			<!-- ~~~~~~~~~~~~~~~~ -->
+			<!-- Spring support -->
+			<!-- ~~~~~~~~~~~~~~~~ -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-spring</artifactId>
+				<version>${jbehave.version}</version>
+			</dependency>
+
+			<!-- ~~~~~~~~~~~~~~~~ -->
+			<!-- Log -->
+			<!-- ~~~~~~~~~~~~~~~~ -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<dependency>
+				<artifactId>slf4j-api</artifactId>
+				<groupId>org.slf4j</groupId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<!-- ~~~~~~~~~~~~~~~~ -->
+			<!-- Misc -->
+			<!-- ~~~~~~~~~~~~~~~~ -->
+			<dependency>
+				<groupId>org.functionaljava</groupId>
+				<artifactId>functionaljava</artifactId>
+				<version>${functionaljava.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>

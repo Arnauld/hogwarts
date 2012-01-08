@@ -1,0 +1,1 @@
+Hogwarts is a playground project (initially used to prepare a presentation around the jbehave-eclipse-plugin). The project quickly switch to be used to experiment different approach for modeling our domain.
