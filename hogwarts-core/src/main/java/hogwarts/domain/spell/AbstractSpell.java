@@ -1,6 +1,5 @@
-package hogwarts.domain;
+package hogwarts.domain.spell;
 
-import hogwarts.environment.Animation;
 
 public abstract class AbstractSpell<T extends Spell<T>> implements Spell<T> {
     
@@ -17,11 +16,6 @@ public abstract class AbstractSpell<T extends Spell<T>> implements Spell<T> {
     @SuppressWarnings("unchecked")
     public T specializeForLevel(SpellLevel level) {
         return (T)this;
-    }
-    
-    @Override
-    public Animation createAnimation(Incantation<T> incantation) {
-        return Animation.None;
     }
     
 }

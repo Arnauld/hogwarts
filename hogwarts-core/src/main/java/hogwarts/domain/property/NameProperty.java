@@ -1,4 +1,4 @@
-package hogwarts.qi4j.behavior.property;
+package hogwarts.domain.property;
 
 import org.qi4j.api.property.Property;
 

@@ -58,7 +58,7 @@ public class MethodsTest {
     
     @Test
     public void asEffectF_valid_method_ex2() {
-        F<Integer,Effect<SomeBehavior>> effectF = Methods.asEffectF(SomeBehavior.class, "electrize", Integer.class);
+        F<Integer,Effect<SomeBehavior>> effectF = Methods.asEffectF(SomeBehavior.class, "electrize", int.class);
         effectF.f(14).e(behavior);
         verify(behavior).electrize(14);
         verifyNoMoreInteractions(behavior);

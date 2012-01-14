@@ -1,5 +1,6 @@
-package hogwarts.domain;
+package hogwarts.domain.behavior;
 
+import hogwarts.domain.Wand;
 import fj.Effect;
 import fj.F;
 import fj.data.Option;

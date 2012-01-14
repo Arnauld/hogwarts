@@ -2,7 +2,7 @@ package hogwarts.domain.spell;
 
 import fj.data.HashMap;
 import fj.data.Option;
-import hogwarts.domain.Spell;
+import hogwarts.domain.misc.Intensity;
 import hogwarts.util.ReflectRuntimeException;
 
 public class Spells {
@@ -24,5 +24,19 @@ public class Spells {
         } catch (IllegalAccessException e) {
             throw new ReflectRuntimeException("Cannot create spell <" + spell.getSimpleName() + ">", e);
         }
+    }
+    
+    public static Intensity defaultIntensityForLevel(SpellLevel level) {
+        switch(level) {
+            case Beginner: 
+                return Intensity.valueOf(1, Intensity.Unit.Raw);
+            case Novice: 
+                return Intensity.valueOf(10, Intensity.Unit.Raw);
+            case Expert: 
+                return Intensity.valueOf(50, Intensity.Unit.Raw);
+            case Master:
+                return Intensity.valueOf(100, Intensity.Unit.Percent);
+        }
+        return Intensity.valueOf(0, Intensity.Unit.Raw);
     }
 }

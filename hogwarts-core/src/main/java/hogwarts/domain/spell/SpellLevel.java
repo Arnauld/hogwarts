@@ -1,4 +1,4 @@
-package hogwarts.domain;
+package hogwarts.domain.spell;
 
 public enum SpellLevel {
     Beginner,

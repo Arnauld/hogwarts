@@ -1,7 +1,7 @@
 package hogwarts.domain.capability;
 
 import fj.Effect;
-import hogwarts.domain.Intensity;
+import hogwarts.domain.misc.Intensity;
 
 
 public class Fear {

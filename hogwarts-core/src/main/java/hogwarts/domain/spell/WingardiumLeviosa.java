@@ -1,13 +1,12 @@
 package hogwarts.domain.spell;
 
-import static hogwarts.domain.InteractiveObject.levitate;
+import static hogwarts.domain.spell.CanBeStrikedBySpell.F.strikedBySpell;
+import static hogwarts.domain.spell.Spells.defaultIntensityForLevel;
 import fj.Effect;
-import hogwarts.domain.AbstractSpell;
-import hogwarts.domain.Incantation;
-import hogwarts.domain.InteractiveObject;
-import hogwarts.domain.SpellLevel;
-import hogwarts.domain.Targetable;
+import hogwarts.domain.behavior.CanLevitate;
+import hogwarts.domain.misc.Intensity;
 import hogwarts.environment.Environment;
+import hogwarts.util.HasBehavior;
 
 /**
  *  Wingardium Leviosais a charm used to make objects levitate,
@@ -38,16 +37,17 @@ public class WingardiumLeviosa extends AbstractSpell<WingardiumLeviosa> {
     }
     
     @Override
-    public void process(Incantation<WingardiumLeviosa> incantation,Environment environment) {
-        incantation.getTarget().foreach(getEffectOnTarget());
+    public void performIncantation(Incantation<WingardiumLeviosa> incantation,Environment environment) {
+        Intensity intensity = defaultIntensityForLevel(getLevel());
+        incantation.getTarget().foreach(getEffectOnTarget(intensity));
     }
     
-    protected Effect<Targetable> getEffectOnTarget() {
-        return new Effect<Targetable> () {
+    protected Effect<HasBehavior> getEffectOnTarget(final Intensity intensity) {
+        return new Effect<HasBehavior> () {
             @Override
-            public void e(Targetable t) {
-                t.strikedBySpell(WingardiumLeviosa.this);
-                t.as(InteractiveObject.class).foreach(levitate);
+            public void e(HasBehavior t) {
+                t.as(CanBeStrikedBySpell.class).foreach(strikedBySpell(WingardiumLeviosa.this));
+                t.as(CanLevitate.class).foreach(CanLevitate.F.levitate(intensity));
             }
         };
     }

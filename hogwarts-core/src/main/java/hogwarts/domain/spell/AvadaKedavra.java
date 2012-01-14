@@ -1,17 +1,11 @@
 package hogwarts.domain.spell;
 
-import static hogwarts.domain.LivingCreature.kill;
+import static hogwarts.domain.behavior.LivingCreature.F.kill;
+import static hogwarts.domain.spell.CanBeStrikedBySpell.F.strikedBySpell;
 import fj.Effect;
-import hogwarts.domain.AbstractSpell;
-import hogwarts.domain.Caster;
-import hogwarts.domain.Incantation;
-import hogwarts.domain.LivingCreature;
-import hogwarts.domain.SpellLevel;
-import hogwarts.domain.Targetable;
-import hogwarts.environment.Animation;
-import hogwarts.environment.Color;
+import hogwarts.domain.behavior.LivingCreature;
 import hogwarts.environment.Environment;
-import hogwarts.environment.effect.BeamOfLight;
+import hogwarts.util.HasBehavior;
 
 /**
  *  The Killing Curse (also known as the Avada Kedavra Curse) is a 
@@ -25,36 +19,16 @@ public class AvadaKedavra extends AbstractSpell<AvadaKedavra> {
     }
 
     @Override
-    public void process(Incantation<AvadaKedavra> incantation, Environment environment) {
+    public void performIncantation(Incantation<AvadaKedavra> incantation, Environment environment) {
         incantation.getTarget().foreach(getEffectOnTarget());
     }
     
-    protected Effect<Targetable> getEffectOnTarget() {
-        return new Effect<Targetable> () {
+    protected Effect<HasBehavior> getEffectOnTarget() {
+        return new Effect<HasBehavior> () {
             @Override
-            public void e(Targetable t) {
-                t.strikedBySpell(AvadaKedavra.this);
-                t.as(LivingCreature.class).foreach(kill);
-            }
-        };
-    }
-    
-    @Override
-    public Animation createAnimation(final Incantation<AvadaKedavra> incantation) {
-        return new Animation() {
-            public void animate(Environment environment) {
-                Caster caster = incantation.getCaster();
-                incantation.getTarget().foreach(getAnimationEffect(caster, environment));
-            }
-        };
-    }
-    
-    protected Effect<Targetable> getAnimationEffect(final Caster caster, final Environment environment) {
-        return new Effect<Targetable> () {
-            @Override
-            public void e(Targetable target) {
-                BeamOfLight beamOfLight = environment.getEffectFactory().createBeamOfLight(Color.Green);
-                beamOfLight.makePulsating(caster, target);
+            public void e(HasBehavior t) {
+                t.as(CanBeStrikedBySpell.class).foreach(strikedBySpell(AvadaKedavra.this));
+                t.as(LivingCreature.class).foreach(kill());
             }
         };
     }

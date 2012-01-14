@@ -1,5 +1,8 @@
 package hogwarts.domain;
 
-public interface Wand extends InanimateObject, Targetable {
-    boolean isHold();
+import fj.data.Option;
+import hogwarts.util.HasBehavior;
+
+public interface Wand extends HasBehavior {
+    Option<HasBehavior> holdBy();
 }

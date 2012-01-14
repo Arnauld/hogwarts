@@ -1,13 +1,13 @@
 package hogwarts.domain.spell;
 
-import static hogwarts.domain.InanimateObject.repair;
+import static hogwarts.domain.spell.CanBeStrikedBySpell.F.strikedBySpell;
+import static hogwarts.domain.spell.Spells.defaultIntensityForLevel;
+import static hogwarts.domain.behavior.CanBeRepaired.F.repair;
 import fj.Effect;
-import hogwarts.domain.AbstractSpell;
-import hogwarts.domain.InanimateObject;
-import hogwarts.domain.Incantation;
-import hogwarts.domain.SpellLevel;
-import hogwarts.domain.Targetable;
+import hogwarts.domain.behavior.CanBeRepaired;
+import hogwarts.domain.misc.Intensity;
 import hogwarts.environment.Environment;
+import hogwarts.util.HasBehavior;
 
 /**
  *  Reparo is a spell used to seamlessly mend broken objects. 
@@ -31,16 +31,17 @@ public class Reparo extends AbstractSpell<Reparo> {
     }
     
     @Override
-    public void process(Incantation<Reparo> incantation, Environment environment) {
-        incantation.getTarget().foreach(getEffectOnTarget());
+    public void performIncantation(Incantation<Reparo> incantation, Environment environment) {
+        Intensity intensity = defaultIntensityForLevel(getLevel());
+        incantation.getTarget().foreach(getEffectOnTarget(intensity));
     }
     
-    protected Effect<Targetable> getEffectOnTarget() {
-        return new Effect<Targetable> () {
+    protected Effect<HasBehavior> getEffectOnTarget(final Intensity intensity) {
+        return new Effect<HasBehavior> () {
             @Override
-            public void e(Targetable t) {
-                t.strikedBySpell(Reparo.this);
-                t.as(InanimateObject.class).foreach(repair);
+            public void e(HasBehavior t) {
+                t.as(CanBeStrikedBySpell.class).foreach(strikedBySpell(Reparo.this));
+                t.as(CanBeRepaired.class).foreach(repair(intensity));
             }
         };
     }

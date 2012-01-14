@@ -1,4 +1,4 @@
-package hogwarts.domain;
+package hogwarts.domain.behavior;
 
 import fj.Effect;
 import fj.F;

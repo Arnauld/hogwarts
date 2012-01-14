@@ -9,7 +9,6 @@
 	</parent>
 	<artifactId>hogwarts-jbehave</artifactId>
 
-
 	<dependencies>
 
 		<dependency>
@@ -26,6 +25,15 @@
 			<artifactId>jbehave-core</artifactId>
 		</dependency>
 
+		<!-- Resources for unpack for reports -->
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>${jbehave.version}</version>
+			<classifier>resources</classifier>
+			<type>zip</type>
+		</dependency>
+
 		<!-- ~~~~~~~~~~~~~~~~ -->
 		<!-- Spring support -->
 		<!-- ~~~~~~~~~~~~~~~~ -->
@@ -39,5 +47,24 @@
 		</dependency>
 
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-maven-plugin</artifactId>
+				<version>${jbehave.version}</version>
+				<executions>
+					<execution>
+						<id>unpack-view-resources</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>unpack-view-resources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

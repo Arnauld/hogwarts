@@ -1,4 +1,4 @@
-package hogwarts.qi4j.behavior;
+package hogwarts.domain.behavior;
 
 import hogwarts.domain.property.NameProperty;
 

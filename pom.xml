@@ -9,6 +9,7 @@
 	<modules>
 		<module>hogwarts-core</module>
 		<module>hogwarts-jbehave</module>
+		<module>hogwarts-d4</module>
 	</modules>
 
 	<properties>
