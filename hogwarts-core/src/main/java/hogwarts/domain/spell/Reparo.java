@@ -33,7 +33,7 @@ public class Reparo extends AbstractSpell<Reparo> {
     @Override
     public void performIncantation(Incantation<Reparo> incantation, Environment environment) {
         Intensity intensity = defaultIntensityForLevel(getLevel());
-        incantation.getTarget().foreach(getEffectOnTarget(intensity));
+        applyOnTarget(incantation, getEffectOnTarget(intensity));
     }
     
     protected Effect<HasBehavior> getEffectOnTarget(final Intensity intensity) {

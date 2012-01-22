@@ -20,7 +20,7 @@ public class AvadaKedavra extends AbstractSpell<AvadaKedavra> {
 
     @Override
     public void performIncantation(Incantation<AvadaKedavra> incantation, Environment environment) {
-        incantation.getTarget().foreach(getEffectOnTarget());
+        applyOnTarget(incantation, getEffectOnTarget());
     }
     
     protected Effect<HasBehavior> getEffectOnTarget() {

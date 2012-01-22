@@ -1,6 +1,7 @@
 package hogwarts.step;
 
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.When;
 
 public class WizardSteps {
     /**
@@ -19,5 +20,13 @@ public class WizardSteps {
      */
     @Given("a wizard named $wizardName")
     public void defineCurrentWizard(String wizardName) {
+    }
+    
+    /**
+     * All wizards currently defined in context meet together.
+     * Sometimes magical things happen during such meeting.
+     */
+    @When("the wizards meet")
+    public void wizardsMeetings() {
     }
 }

@@ -4,5 +4,9 @@ public enum SpellLevel {
     Beginner,
     Novice,
     Expert,
-    Master
+    Master;
+
+    public boolean isHigherThan(SpellLevel other) {
+        return ordinal()>other.ordinal();
+    }
 }

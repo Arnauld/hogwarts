@@ -2,9 +2,8 @@ package hogwarts.domain.spell;
 
 import hogwarts.environment.Environment;
 
-
-
 public interface Spell<T extends Spell<T>> {
+    String spellName();
     boolean isTargetable();
 
     SpellLevel getLevel();

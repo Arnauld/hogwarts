@@ -35,6 +35,9 @@ public class Parameter<T> {
             super();
             this.value = value;
         }
+        public Parameter<T> getParameter() {
+            return Parameter.this;
+        }
     }
 
 }

@@ -39,7 +39,7 @@ public class WingardiumLeviosa extends AbstractSpell<WingardiumLeviosa> {
     @Override
     public void performIncantation(Incantation<WingardiumLeviosa> incantation,Environment environment) {
         Intensity intensity = defaultIntensityForLevel(getLevel());
-        incantation.getTarget().foreach(getEffectOnTarget(intensity));
+        applyOnTarget(incantation, getEffectOnTarget(intensity));
     }
     
     protected Effect<HasBehavior> getEffectOnTarget(final Intensity intensity) {

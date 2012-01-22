@@ -34,7 +34,7 @@ public class ExpectoPatronum extends AbstractSpell<ExpectoPatronum> {
 
     @Override
     public void performIncantation(Incantation<ExpectoPatronum> incantation, Environment environment) {
-        incantation.getTarget().foreach(getEffectOnTarget(incantation));
+        applyOnTarget(incantation, getEffectOnTarget(incantation));
     }
     
     protected Effect<HasBehavior> getEffectOnTarget(final Incantation<ExpectoPatronum> incantation) {

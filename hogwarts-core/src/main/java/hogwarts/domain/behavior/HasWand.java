@@ -1,11 +1,18 @@
 package hogwarts.domain.behavior;
 
-import hogwarts.domain.Wand;
+import org.qi4j.api.common.Optional;
+
 import fj.Effect;
 import fj.F;
 import fj.data.Option;
+import hogwarts.domain.Wand;
+import hogwarts.domain.WandProperty;
 
 public interface HasWand {
+
+    @Optional
+    WandProperty wand();
+    
     Option<Wand> getWand();
     
     public static F<Effect<Wand>, Effect<HasWand>> applyEffectOnWand = new F<Effect<Wand>, Effect<HasWand>>() {
