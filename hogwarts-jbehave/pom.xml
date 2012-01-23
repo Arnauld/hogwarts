@@ -45,7 +45,23 @@
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-spring</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+		</dependency>
 
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<!-- Log -->
+		<!-- ~~~~~~~~~~~~~~~~ -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<artifactId>slf4j-api</artifactId>
+			<groupId>org.slf4j</groupId>
+		</dependency>
 	</dependencies>
 
 	<build>

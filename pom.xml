@@ -19,6 +19,7 @@
 		<guava.version>10.0.1</guava.version>
 		<slf4j.version>1.6.4</slf4j.version>
 		<logback.version>1.0.0</logback.version>
+		<cglib.version>2.2.2</cglib.version>
 
 		<!-- Java 1.6 -->
 		<maven.compiler.source>1.6</maven.compiler.source>
@@ -48,6 +49,11 @@
 				<groupId>org.jbehave</groupId>
 				<artifactId>jbehave-spring</artifactId>
 				<version>${jbehave.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>${cglib.version}</version>
 			</dependency>
 
 			<!-- ~~~~~~~~~~~~~~~~ -->

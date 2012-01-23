@@ -21,4 +21,8 @@ public enum NumericalAccessorKey {
         }
         return null;
     }
+
+    public int asIndex() {
+        return ordinal();
+    }
 }

@@ -3,6 +3,7 @@ package hogwarts.environment;
 import hogwarts.environment.effect.BeamOfLight;
 import hogwarts.environment.effect.Glow;
 import hogwarts.environment.effect.ShapeEffect;
+import hogwarts.environment.effect.Spark;
 
 public class EffectFactory {
     
@@ -21,6 +22,10 @@ public class EffectFactory {
 
     public ShapeEffect createShape(hogwarts.environment.Shape shape) {
         return new ShapeEffect(environment, shape);
+    }
+
+    public Spark createSpark() {
+        return new Spark(environment, Color.Gold);
     }
 
 }

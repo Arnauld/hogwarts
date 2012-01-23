@@ -24,7 +24,7 @@ public class WizardFactory {
     private TransientBuilderFactory defaultTransientBuilderFactory;
 
     public Wizard create(String name) {
-        TransientBuilder<WizardComposite> wizardBuilder = newWizardBuilder();
+        TransientBuilder<WizardComposite> wizardBuilder = newDefaultWizardBuilder();
         WizardComposite prototype = wizardBuilder.prototype();
         prototype.name().set(name);
         prototype.spellBook().set(new SpellBook());
@@ -34,7 +34,7 @@ public class WizardFactory {
         return wizard;
     }
 
-    private TransientBuilder<WizardComposite> newWizardBuilder() {
+    private TransientBuilder<WizardComposite> newDefaultWizardBuilder() {
         if (defaultTransientBuilderFactory == null)
             defaultTransientBuilderFactory = initializeDefaultFactory();
         return defaultTransientBuilderFactory.newTransientBuilder(WizardComposite.class);
