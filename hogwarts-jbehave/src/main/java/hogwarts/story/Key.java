@@ -2,5 +2,6 @@ package hogwarts.story;
 
 public enum Key {
     Wizard,
-    Wand
+    Wand,
+    Target
 }

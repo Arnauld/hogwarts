@@ -1,5 +1,10 @@
 package hogwarts.step;
 
+import hogwarts.story.Context;
+
+import java.util.Arrays;
+import java.util.List;
+
 import jbehave.Steps;
 
 import org.jbehave.core.annotations.Given;
@@ -23,10 +28,24 @@ public class CastSpellSteps {
      *        for the next actions.
      */
     @Given("a target named $targetName")
-    public void defineTarget(String targetName) {}
+    public void defineTarget(String targetName) {
+        Context context = Context.get();
+        Object named = context.getNamed(targetName);
+        for(String variant : variantsOf("target"))
+            context.put(variant, named);
+    }
 
-    @Given("a target named $targetName blessed with $spellName")
-    public void defineBlessedTarget(String targetName, String spellName) {}
+    private static List<String> variantsOf(String string) {
+        return Arrays.asList(string,"a " + string, "the "+string);
+    }
+
+    /**
+     * Bless <code>named</code> with the given spell.
+     * @param named identifier of the person that is blessed
+     * @param spellName the bless spell invoked
+     */
+    @Given("$named blessed with $spellName")
+    public void bless(String targetName, String spellName) {}
 
     @When("the wizard cast the spell $spellName")
     public void cast(String spellName) {}

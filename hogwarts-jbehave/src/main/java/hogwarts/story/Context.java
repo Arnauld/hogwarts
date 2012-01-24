@@ -44,6 +44,10 @@ public class Context {
     public <T> void put(Object key, T value) {
         transientData.put(key, value);
     }
+    
+    public void removeAll(Object key) {
+        transientData.removeAll(key);
+    }
 
     @SuppressWarnings("unchecked")
     public <T> Collection<T> get(Object key) {
